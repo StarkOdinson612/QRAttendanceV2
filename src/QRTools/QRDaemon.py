@@ -50,7 +50,7 @@ class QRDaemon:
             if not ret:
                 break
             if not self.img_q.full():
-                self.img_q.put(gray_frame)
+                self.img_q.put(frame)
 
             # Detect and decode QR codes in the frame
             self.read_qr_code(gray_frame)
