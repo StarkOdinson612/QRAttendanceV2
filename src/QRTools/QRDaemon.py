@@ -11,7 +11,7 @@ from src.UI.Dashboard.MembersFrame import MembersFrame
 class QRDaemon:
     def __init__(self, member_list: MembersFrame, img_q: Queue):
         self.member_list = member_list
-        self.qr_code_detector = cv2.barcode.BarcodeDetector()
+        self.qr_code_detector = cv2.QRCodeDetector()
         self.img_q = img_q
 
     # Function to decode and display QR code
@@ -46,7 +46,6 @@ class QRDaemon:
             ret, frame = cap.read()
 
             gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            # gray_frame=  frame
 
             if not ret:
                 break
