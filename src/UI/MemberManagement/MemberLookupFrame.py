@@ -44,13 +44,16 @@ class MemberIDLookupEntry(customtkinter.CTkFrame):
 
         jsondat = {}
         name = ""
+        subteam = ""
         with open(Constants.JSON_PATH) as f:
             temp = json.load(f)
             name = temp[id_mem]["name"]
+            subteam = temp[id]["subteam"]
+
             jsondat = temp[id_mem]["attendance"]
 
         tstr = [f"{key}: {value}" for (key, value) in jsondat.items()]
         self.parent.member_info_box.configure(state="normal")
         self.parent.member_info_box.delete("0.0", "end")
-        self.parent.member_info_box.insert("0.0", f"{name}\n" + "\n".join(tstr))
+        self.parent.member_info_box.insert("0.0", f"{name} -{subteam}\n" + "\n".join(tstr))
         self.parent.member_info_box.configure(state="disabled")

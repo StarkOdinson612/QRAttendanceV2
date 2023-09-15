@@ -3,21 +3,17 @@ import json
 import customtkinter
 
 from src.Constants import Constants
-from src.UI.RemoteManagement.KeyGenerationFrame import KeyGenerationFrame
 
 
-class RemoteManagementUI:
-    def __init__(self, parent: customtkinter.CTkTabview):
-        self.ID = "Remote Management"
-        self.parent = parent
-        self.parent.tab(self.ID).grid_columnconfigure(index=(0, 1), weight=1)
-        self.parent.tab(self.ID).rowconfigure(index=0, weight=1)
+class RemoteManagementFrame(customtkinter.CTkFrame):
+    def __init__(self, master: any, **kwargs):
+        super().__init__(master, **kwargs)
 
-        self.keygen_frame = KeyGenerationFrame(self.parent.tab(self.ID))
-        self.keygen_frame.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+        self.grid_columnconfigure(index=0, weight=1)
+        self.grid_rowconfigure(index=1, weight=1)
 
-        self.url_update = UpdateURL(self.parent.tab(self.ID))
-        self.url_update.grid(row=0,column=1,sticky="nsew")
+        self.url_update = UpdateURL(self)
+        self.url_update.grid(row=0, column=0, padx=10, pady=10, sticky="n")
 
 
 class UpdateURL(customtkinter.CTkFrame):

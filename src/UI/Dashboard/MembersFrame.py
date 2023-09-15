@@ -27,7 +27,7 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
             for key in temp.keys():
                 self.add_member_widget(key)
 
-        self.grid_columnconfigure((0, 1, 2, 3), weight=1)
+        self.grid_columnconfigure((0, 1, 2, 3, 4, 5), weight=1)
 
     def check_signed_in(self, id: str):
         a = self.attendance_map.get(id)
@@ -35,11 +35,13 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
 
     def add_member_widget(self, id: int):
         name: str
+        subteam: str
         with open(Constants.JSON_PATH) as f:
             temp = json.load(f)
             name = temp[id]["name"]
-        temp_memwidget = MemberWidget(master=self, id=id, name=name)
-        temp_memwidget.grid(row=int(len(self.member_list) / 4), column=len(self.member_list) % 4, pady=5, padx=5,
+            subteam = temp[id]["subteam"]
+        temp_memwidget = MemberWidget(master=self, m_id=id, name=name, subteam=subteam)
+        temp_memwidget.grid(row=int(len(self.member_list) / 6), column=len(self.member_list) % 6, pady=5, padx=5,
                             sticky="ew")
         self.member_list.append(temp_memwidget)
         # self.attendance_map[id] = int(time.time())
@@ -50,7 +52,7 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
             if member.get_id() == m_id:
                 member.set_button_state(True)
 
-    def sign_out(self, m_id: int):
+    def sign_out(self, m_id: str):
         for m_widget in self.member_list:
             if m_widget.get_id() == m_id and self.check_signed_in(m_id):
                 time_diff = int((time.time() - self.attendance_map[m_id]) / 60)

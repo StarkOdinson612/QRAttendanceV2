@@ -4,7 +4,7 @@ import customtkinter
 
 from src.UI.Dashboard.DashboardUI import DashboardUI
 from src.UI.MemberManagement.MemberManagementUI import MemberManagementUI
-from src.UI.RemoteManagement.RemoteManagementUI import RemoteManagementUI
+from src.UI.RemoteManagement.AuthManagementUI import AuthManagementUI
 
 
 class HomeTabView(customtkinter.CTkTabview):
@@ -17,7 +17,7 @@ class HomeTabView(customtkinter.CTkTabview):
 
         self.DashboardTab = DashboardUI(self)
         self.MemberManagementTab = MemberManagementUI(self)
-        self.RemoteManagementTab = RemoteManagementUI(self)
+        self.RemoteManagementTab = AuthManagementUI(self)
 
 
 class App(customtkinter.CTk):

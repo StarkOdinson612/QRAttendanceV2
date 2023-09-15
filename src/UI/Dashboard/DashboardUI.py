@@ -16,7 +16,7 @@ class DashboardUI:
     def __init__(self, parent: customtkinter.CTkTabview):
         self.ID = "Dashboard"
         self.parent = parent
-        self.parent.tab(self.ID).grid_columnconfigure((0, 1, 2, 3), weight=1, pad=10)
+        self.parent.tab(self.ID).grid_columnconfigure((0, 1, 2), weight=1, pad=10)
         self.parent.tab(self.ID).grid_rowconfigure(0, weight=1)
 
         self.parent.member_section = MembersFrame(master=parent.tab(self.ID))
@@ -84,7 +84,7 @@ class RightFrame(customtkinter.CTkFrame):
             time.sleep(0.05)
 
     def launch_qr(self):
-        self.image_w.configure(size=(400,400))
+        self.image_w.configure(size=(325,325))
         qr_daemon = QRDaemon(member_list=self.member_section, img_q=self.img_queue)
         qr_daemon_thread = threading.Thread(target=qr_daemon.main)
         qr_daemon_thread.daemon = True

@@ -45,18 +45,19 @@ class DataGenerationFrame(customtkinter.CTkFrame):
         f = self.getFromFileText.get("0.0", "end")
         self.getFromFileText.delete("0.0", "end")
 
-        temp = [s.split("\t") for s in f.split("\n")]
+        temp = [s.split("    ") for s in f.split("\n")]
 
         jsonf = {}
         with open(Constants.JSON_PATH) as f:
             jsonf = json.load(f)
 
         for bit in temp:
-            if len(bit) < 2:
+            if len(bit) < 3:
                 continue
 
             jsonf[bit[0]] = {
-                "name": bit[1],
+                "name": bit[2],
+                "subteam": bit[4],
                 "attendance": {}
             }
 
