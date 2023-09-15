@@ -1,8 +1,8 @@
 import json
-from queue import Queue
-
 import cv2
 import time
+
+from queue import Queue
 
 from src.Constants import Constants
 from src.UI.Dashboard.MembersFrame import MembersFrame

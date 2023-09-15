@@ -13,9 +13,11 @@ scopes = [
 
 credentials = ServiceAccountCredentials.from_json_keyfile_name(Constants.AUTH_PATH,
                                                                scopes)
-file = gspread.authorize(credentials)  # authenticate the JSON key with gspread
-sheet = file.open_by_url("https://docs.google.com/spreadsheets/d/15Kke3Mu1RXPREtoQE5KIsKQF0PsiuCmZLCRfNY8SKcQ/edit"
-                         "#gid=0")
+file = gspread.authorize(credentials)
+url_sheet: str
+with open(Constants.SHEET_INFO_PATH) as f:
+    url_sheet = json.load(f)["url"]
+sheet = file.open_by_url(url_sheet)
 sheet = sheet.get_worksheet(0)
 
 
