@@ -2,6 +2,11 @@
 
 This project is a QR-based attendance system that utilitizes JSON data storage and allows for exports to CSV files
 
+![Homepage](https://github.com/StarkOdinson612/QRAttendanceV2/assets/61901829/3288d2ab-ae97-406d-9be0-71fe4a96b354)
+
+![Member Management](https://github.com/StarkOdinson612/QRAttendanceV2/assets/61901829/b963d890-6e8f-49a9-950e-b3c5c10c2be1)
+
+
 ## Installation and Usage
 
 Simply install the latest release (Only Windows supported as of now), unzip the zip file, and run the main.exe file. 
