@@ -33,7 +33,7 @@ class DashboardUI:
                                                     fg_color="#D63D3D",
                                                     bg_color="transparent",
                                                     hover_color="#BC3535",
-                                                    command=self.parent.member_section.sign_out_all)
+                                                    command=self.parent.member_section.auth_pwd())
         self.sign_out_all.grid(row=3, column=1, sticky="sew", pady=(10, 10), padx=15)
 
         self.right_frame = RightFrame(self.parent.tab(self.ID), member_section=self.parent.member_section)

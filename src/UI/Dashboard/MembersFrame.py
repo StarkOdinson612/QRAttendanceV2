@@ -81,3 +81,12 @@ class MembersFrame(customtkinter.CTkScrollableFrame):
             self.sign_out(m_widget.get_id())
 
         UpdateSheet.update_sheet()
+
+    def auth_pwd(self):
+        dialog = customtkinter.CTkInputDialog(text="Are you sure you want to do this? Enter password below:",
+                                              title="Confirmation")
+
+        entered_password = dialog.get_input()
+
+        if entered_password == "Vector8177Authorization":
+            self.sign_out_all()

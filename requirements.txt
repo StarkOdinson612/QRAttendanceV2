@@ -1,0 +1,4 @@
+Pillow~=10.0.0
+customtkinter~=5.2.0
+opencv-python~=4.8.0.76
+gspread~=5.11.3
