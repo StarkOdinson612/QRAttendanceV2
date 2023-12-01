@@ -1,6 +1,7 @@
 import datetime
 import json
 import os.path
+import re
 
 import customtkinter
 import csv
@@ -45,7 +46,7 @@ class DataGenerationFrame(customtkinter.CTkFrame):
         f = self.getFromFileText.get("0.0", "end")
         self.getFromFileText.delete("0.0", "end")
 
-        temp = [s.split("\t") for s in f.split("\n")]
+        temp = [[i for i in s.split("    ") if len(i) != 0] for s in f.split("\n")]
 
         jsonf = {}
         with open(Constants.JSON_PATH) as f:
@@ -68,7 +69,7 @@ def flatten_json():
     fields = []
     list_fin = []
     with open(Constants.MEETING_DATES_PATH) as file:
-        fields = file.readlines()
+        fields = [re.sub("[^0-9-]", "",i) for i in file.readlines()]
     with open(Constants.JSON_PATH) as f:
         temp: {} = json.load(f)
         for key, value in temp.items():
